@@ -1,3 +1,3 @@
 # Robo_IoT
 Projeto integrador VI da Univesp
- Atualizar código
+ A revisão é a que vale.
