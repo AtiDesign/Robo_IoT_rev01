@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel de Monitoramento IoT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Painel de Monitoramento IoT</h2>
+
+    <div class="container">
+        <div class="monitoramento">
+            <h3>Leitura do Paciente</h3>
+            <label>NOME DO PACIENTE:</label>
+            <input type="text" id="nomePaciente" placeholder="Digite o nome">
+            <label>TEMPERATURA DO PACIENTE (°C):</label>
+            <input type="text" id="tempPaciente" readonly>
+            <label>DATA DA MEDIÇÃO:</label>
+            <input type="text" id="dataMedicao" readonly>
+        </div>
+
+        <div class="controles">
+            <h3>Controle do Robô</h3>
+            <label><input type="checkbox" id="modoSimulado"> Modo Simulação</label>
+            <div class="botoes">
+                <button class="btn frente" onclick="mover('cima')">↑ FRENTE</button>
+                <button class="btn tras" onclick="mover('baixo')">↓ TRÁS</button>
+                <button class="btn esquerda" onclick="mover('esquerda')">← ESQUERDA</button>
+                <button class="btn direita" onclick="mover('direita')">→ DIREITA</button>
+                <button class="btn girarDir" onclick="status.innerHTML='Robô girando à direita'">↻ GIRA À DIREITA</button>
+                <button class="btn girarEsq" onclick="status.innerHTML='Robô girando à esquerda'">↺ GIRA À ESQUERDA</button>
+                <button class="btn caminhar" onclick="mover('cima')">🚶 CAMINHAR</button>
+                <button class="btn stop" onclick="status.innerHTML='Robô parado'">⏹ STOP</button> 
+                <button class="btn qr" onclick="nomePaciente.value='Paciente QR'">📷 LER QR‑CODE</button>
+                <button class="btn medir" onclick="medirTemperatura()">🌡️ MEDIR TEMPERATURA</button>                
+            </div>
+            <div id="status"></div>
+        </div>
+
+        <div class="robot-area">
+            <!-- Robô em CSS -->
+            <div id="arena">
+                <div id="robo">
+                    <div class="braco esquerdo"></div>
+                    <div class="braco direito" id="bracoDireito"></div>
+                    <div class="perna esquerda"></div>
+                    <div class="perna direita"></div>
+                    <div id="visor">--°C</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
